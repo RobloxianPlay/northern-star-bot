@@ -1,0 +1,118 @@
+Upgrade my existing Discord leveling system built with Node.js and discord.js v14.
+
+IMPORTANT RULES
+
+- Slash commands only
+- JSON storage only
+- Beginner friendly
+- Modular files
+- dotenv support
+- Works with node index.js
+- Do not break the current XP system
+
+================================================
+LEVEL ROLE REWARD SYSTEM (UP TO LEVEL 100)
+
+Add automatic role rewards for users when they reach certain levels.
+
+Levels supported:
+1 to 100.
+
+Milestone roles example:
+
+Level 5   → Rookie
+Level 10  → Member
+Level 20  → Active
+Level 30  → Pro
+Level 40  → Elite
+Level 50  → Legend
+Level 60  → Master
+Level 70  → Champion
+Level 80  → Mythic
+Level 90  → God
+Level 100 → Ultimate
+
+================================================
+DATA STORAGE
+
+Create file:
+
+data/levelRoles.json
+
+Example structure:
+
+{
+"1": "1434222664448348350",
+"5": "1434222665069236416",
+"10": "1306546481007951934",
+"25": "1306546483318755371",
+"30": "1306546483641843712",
+"50": "1306546483759153236",
+"75": "1306546484124192788",
+"100": "1306546484858322974"
+}
+
+================================================
+AUTO ROLE LOGIC
+
+When a user levels up:
+
+1. Read data/levelRoles.json
+2. Check if the new level exists
+3. If it exists:
+   - Give the role automatically
+   - Send a Level Reward embed
+
+================================================
+LEVEL REWARD EMBED
+
+Title: 🎉 Level Reward
+Description:
+{user} reached Level {level}
+and unlocked the {role} role!
+
+Color: Gold
+
+================================================
+EXTRA FEATURES
+
+- If the user already has the role → do nothing
+- If multiple levels are passed at once → give the highest role
+- Do not remove older roles
+-Auto give user  lvl one role when user has verified role = 1433916846658162818
+================================================
+ADMIN COMMAND
+
+Create command:
+
+/setlevelrole
+
+Options:
+level (number)
+role (role mention)
+
+Admin only.
+
+This command saves the roleId to data/levelRoles.json.
+
+================================================
+FILES
+
+Create:
+data/levelRoles.json
+commands/utility/setlevelrole.js
+
+Modify:
+events/xpHandler.js
+
+================================================
+OUTPUT
+
+Generate FULL working code for:
+
+- data/levelRoles.json
+- commands/utility/setlevelrole.js
+- updated events/xpHandler.js
+
+No explanations.
+Only code.

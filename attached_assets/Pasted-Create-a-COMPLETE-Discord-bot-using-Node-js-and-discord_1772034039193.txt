@@ -1,0 +1,217 @@
+Create a COMPLETE Discord bot using Node.js and discord.js v14.
+
+IMPORTANT RULES:
+- Slash commands ONLY (no prefix commands)
+- Beginner friendly code
+- Modular file structure
+- JSON storage only (no database)
+- dotenv support
+- Works with node index.js
+- Global slash commands (works in ALL servers, not guild-only)
+- Clean, readable code
+- Output FULL WORKING FILES ONLY
+- No explanations, no comments outside code
+
+================================================
+CORE FEATURES
+================================================
+
+ECONOMY SYSTEM (persistent JSON)
+data/economy.json
+
+Commands:
+- /balance → show coins
+- /daily → daily reward (24h cooldown)
+- /work → random coins
+- /give → transfer coins
+- /leaderboard → richest users
+
+================================================
+HELP COMMAND
+================================================
+
+/help
+- shows embed listing ALL commands grouped by category:
+  Economy
+  Fun
+  Utility
+  Moderation
+
+================================================
+EMBED + ANNOUNCEMENT SYSTEM
+================================================
+
+commands/utility/embed.js
+/embed
+- title (required)
+- description (required)
+- color (optional hex)
+- image (optional)
+
+commands/utility/announce.js
+/announce
+- admin only
+- sends styled announcement embed
+
+commands/utility/poll.js
+/poll
+- question
+- auto reacts 👍 👎
+
+================================================
+REACTION ROLES SYSTEM
+================================================
+
+commands/utility/reactionroles.js
+events/reactionRoleHandler.js
+data/reactionRoles.json
+
+/reactionroles (admin only)
+
+Behavior:
+- sends embed with roles + emojis
+- users react to get role
+- removing reaction removes role
+- save messageId + emoji + roleId in JSON
+- works automatically with reaction events
+
+================================================
+SHOP SYSTEM (ECONOMY EXPANSION)
+================================================
+
+data/shop.json
+data/inventory.json
+
+commands/economy/shop.js
+/shop → list items with prices
+
+commands/economy/buy.js
+/buy item → deduct coins and give item
+
+commands/economy/inventory.js
+/inventory → show owned items
+
+Rules:
+- if item has roleId → give Discord role
+- else → store item in inventory.json
+
+Example items:
+- VIP Role
+- Giveaway Ticket
+- Mystery Box
+- XP Boost
+
+================================================
+FUN MINIGAMES
+================================================
+
+commands/fun/rps.js
+commands/fun/slots.js
+commands/fun/guessnumber.js
+
+All:
+- allow coin betting
+- reward coins
+
+================================================
+ADVANCED GIVEAWAY SYSTEM
+================================================
+
+commands/economy/giveaway.js
+
+/giveaway
+Options:
+- prize (text like "1000 coins" or "500 Robux")
+- duration (minutes)
+- winners (number)
+
+Features:
+- embed with countdown
+- button to join
+- stores participants
+- random winners
+- announces winners
+- if prize includes "coins" → automatically reward economy coins
+
+================================================
+YOUTUBE NOTIFICATIONS
+================================================
+
+features/youtubeNotifier.js
+
+Use:
+- rss-parser
+- node-cron
+- check every 5 minutes
+- detect new uploads
+- auto send embed
+
+.env variables:
+YOUTUBE_CHANNEL_ID=
+YOUTUBE_NOTIFY_CHANNEL_ID=
+
+Embed shows:
+- title
+- thumbnail
+- link
+- "New Upload" message
+
+================================================
+MODERATION COMMANDS
+================================================
+
+commands/moderation/kick.js
+commands/moderation/ban.js
+commands/moderation/timeout.js
+commands/moderation/clear.js
+
+All admin/mod only.
+
+================================================
+PROJECT STRUCTURE
+================================================
+
+index.js
+deploy-commands.js
+.env
+
+commands/
+  economy/
+  fun/
+  utility/
+  moderation/
+
+events/
+  reactionRoleHandler.js
+
+features/
+  youtubeNotifier.js
+
+data/
+  economy.json
+  shop.json
+  inventory.json
+  reactionRoles.json
+
+================================================
+PACKAGES REQUIRED
+================================================
+
+discord.js
+dotenv
+rss-parser
+node-cron
+
+================================================
+FINAL OUTPUT FORMAT
+================================================
+
+Generate COMPLETE WORKING CODE for EVERY file.
+No explanations.
+No text.
+Only code blocks per file.
+Everything must run immediately after:
+
+npm install
+node deploy-commands.js
+node index.js
