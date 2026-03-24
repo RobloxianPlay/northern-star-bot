@@ -1,0 +1,78 @@
+{
+  "1198970126150672524": {
+    "date": "2026-03-14",
+    "quests": [
+      {
+        "id": "daily_claimed",
+        "label": "Claim daily reward",
+        "type": "daily",
+        "target": 1,
+        "coins": 50,
+        "xp": 50,
+        "progress": 0,
+        "completed": false,
+        "claimed": false
+      },
+      {
+        "id": "use_commands",
+        "label": "Use 5 commands",
+        "type": "commands",
+        "target": 5,
+        "coins": 100,
+        "xp": 80,
+        "progress": 0,
+        "completed": false,
+        "claimed": false
+      },
+      {
+        "id": "send_messages",
+        "label": "Send 20 messages",
+        "type": "messages",
+        "target": 20,
+        "coins": 150,
+        "xp": 100,
+        "progress": 7,
+        "completed": false,
+        "claimed": false
+      }
+    ]
+  },
+  "1190625556333600840": {
+    "date": "2026-03-14",
+    "quests": [
+      {
+        "id": "daily_claimed",
+        "label": "Claim daily reward",
+        "type": "daily",
+        "target": 1,
+        "coins": 50,
+        "xp": 50,
+        "progress": 0,
+        "completed": false,
+        "claimed": false
+      },
+      {
+        "id": "use_commands",
+        "label": "Use 5 commands",
+        "type": "commands",
+        "target": 5,
+        "coins": 100,
+        "xp": 80,
+        "progress": 0,
+        "completed": false,
+        "claimed": false
+      },
+      {
+        "id": "send_messages_hard",
+        "label": "Send 50 messages",
+        "type": "messages",
+        "target": 50,
+        "coins": 300,
+        "xp": 200,
+        "progress": 4,
+        "completed": false,
+        "claimed": false
+      }
+    ]
+  }
+}

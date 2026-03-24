@@ -1,0 +1,30 @@
+[
+  {
+    "id": "vip_role",
+    "name": "VIP Role",
+    "description": "Get the exclusive VIP role!",
+    "price": 5000,
+    "roleId": "REPLACE_WITH_YOUR_VIP_ROLE_ID"
+  },
+  {
+    "id": "giveaway_ticket",
+    "name": "Giveaway Ticket",
+    "description": "Increase your chances in the next giveaway!",
+    "price": 500,
+    "roleId": null
+  },
+  {
+    "id": "mystery_box",
+    "name": "Mystery Box",
+    "description": "What's inside? Nobody knows!",
+    "price": 1000,
+    "roleId": null
+  },
+  {
+    "id": "xp_boost",
+    "name": "XP Boost",
+    "description": "Level up faster for 1 hour!",
+    "price": 2000,
+    "roleId": null
+  }
+]

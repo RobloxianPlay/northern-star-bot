@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bot Dashboard</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+	<div class="sidebar">
+		<div class="logo">🤖 Bot Dashboard</div>
+		<nav>
+			<a href="#overview" class="active">📊 Overview</a>
+			<a href="#economy">💰 Economy</a>
+			<a href="#leveling">⭐ Leveling</a>
+			<a href="#tickets">🎫 Tickets</a>
+		</nav>
+	</div>
+
+	<div class="main">
+		<header>
+			<h1>Server Dashboard</h1>
+			<div id="live-badge">🟢 Live</div>
+		</header>
+
+		<!-- Overview Cards -->
+		<section id="overview">
+			<h2>📊 Overview</h2>
+			<div class="cards">
+				<div class="card blue">
+					<div class="card-title">Total Users</div>
+					<div class="card-value" id="totalUsers"><%= totalUsers %></div>
+				</div>
+				<div class="card green">
+					<div class="card-title">Open Tickets</div>
+					<div class="card-value" id="openTickets"><%= openTickets %></div>
+				</div>
+				<div class="card purple">
+					<div class="card-title">Closed Tickets</div>
+					<div class="card-value"><%= closedTickets %></div>
+				</div>
+				<div class="card red">
+					<div class="card-title">Users Warned</div>
+					<div class="card-value"><%= totalWarnings %></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Economy Leaderboard -->
+		<section id="economy">
+			<h2>💰 Top Economy</h2>
+			<table>
+				<thead><tr><th>#</th><th>User ID</th><th>Coins</th></tr></thead>
+				<tbody>
+					<% topEconomy.forEach((u, i) => { %>
+					<tr>
+						<td><%= i + 1 %></td>
+						<td><code><%= u.id %></code></td>
+						<td>🪙 <%= u.coins.toLocaleString() %></td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</section>
+
+		<!-- Leveling Leaderboard -->
+		<section id="leveling">
+			<h2>⭐ Top Levels</h2>
+			<table>
+				<thead><tr><th>#</th><th>User ID</th><th>Level</th><th>XP</th></tr></thead>
+				<tbody>
+					<% topXp.forEach((u, i) => { %>
+					<tr>
+						<td><%= i + 1 %></td>
+						<td><code><%= u.id %></code></td>
+						<td>⭐ <%= u.level %></td>
+						<td><%= u.xp %> XP</td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</section>
+
+		<!-- Tickets -->
+		<section id="tickets">
+			<h2>🎫 Ticket Stats</h2>
+			<div class="cards">
+				<div class="card green">
+					<div class="card-title">Open Tickets</div>
+					<div class="card-value" id="liveOpenTickets"><%= openTickets %></div>
+				</div>
+				<div class="card purple">
+					<div class="card-title">Closed Tickets</div>
+					<div class="card-value"><%= closedTickets %></div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script>
+		const socket = io();
+		socket.on('update', data => {
+			document.getElementById('totalUsers').textContent    = data.totalUsers;
+			document.getElementById('openTickets').textContent   = data.openTickets;
+			document.getElementById('liveOpenTickets').textContent = data.openTickets;
+		});
+	</script>
+</body>
+</html>
